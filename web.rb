@@ -3,7 +3,9 @@ require 'sinatra/mongomapper'
 
 # Mongo mapper settings
 if settings.environment == :production
-  set :mongomapper, ENV['MONGOLAB_URI']
+  settings[ENV['RACK_ENV']]["uri"] = ENV['MONGOLAB_URI']
+  MongoMapper.config = settings
+  MongoMapper.connect(ENV['RACK_ENV'])
 elsif settings.environment = :development
   set :mongomapper, 'mongomapper://localhost:27017/mongotesttest-example'
 end
