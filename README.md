@@ -17,6 +17,8 @@ To run
 
     foreman start
     # open http://localhost:5000/
+    
+A nice mongodb gui: http://mongohub.todayclose.com/
 
 ## Deployment
 
