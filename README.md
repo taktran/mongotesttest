@@ -26,4 +26,6 @@ To deploy (assuming heroku settings are set up)
 
    git push heroku master
 
+Uses [MongoLab](http://devcenter.heroku.com/articles/mongolab)
+
 This is deployed at: http://mongotesttest.herokuapp.com/
