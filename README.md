@@ -15,7 +15,7 @@ To set up
 
 To run
 
-    foreman start
+    foreman start dev
     # open http://localhost:5000/
     
 A nice mongodb gui: http://mongohub.todayclose.com/
