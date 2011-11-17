@@ -6,7 +6,7 @@ if settings.environment == :production
   settings[ENV['RACK_ENV']]["uri"] = ENV['MONGOLAB_URI']
   MongoMapper.config = settings
   MongoMapper.connect(ENV['RACK_ENV'])
-elsif settings.environment = :development
+elsif settings.environment == :development
   set :mongomapper, 'mongomapper://localhost:27017/mongotesttest-example'
 end
 set :mongo_logfile, File.join("log", "mongo-driver-#{settings.environment}.log")
