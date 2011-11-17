@@ -2,7 +2,11 @@ require 'sinatra'
 require 'sinatra/mongomapper'
 
 # Mongo mapper settings
-set :mongomapper, 'mongomapper://localhost:27017/mongotesttest-example'
+if settings.environment == :production
+  set :mongomapper, ENV['MONGOLAB_URI']
+elsif settings.environment = :development
+  set :mongomapper, 'mongomapper://localhost:27017/mongotesttest-example'
+end
 set :mongo_logfile, File.join("log", "mongo-driver-#{settings.environment}.log")
 
 class TeamMember
