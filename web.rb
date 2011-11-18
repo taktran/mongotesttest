@@ -3,13 +3,12 @@ require 'sinatra/mongomapper'
 
 # Mongo mapper settings
 if settings.environment == :production
-  settings[ENV['RACK_ENV']]["uri"] = ENV['MONGOLAB_URI']
-  MongoMapper.config = settings
-  MongoMapper.connect(ENV['RACK_ENV'])
+  # From heroku settings: http://devcenter.heroku.com/articles/mongolab
+  set :mongomapper, ENV['MONGOLAB_URI']
 elsif settings.environment == :development
   set :mongomapper, 'mongomapper://localhost:27017/mongotesttest-example'
+  set :mongo_logfile, File.join("log", "mongo-driver-development.log")
 end
-set :mongo_logfile, File.join("log", "mongo-driver-#{settings.environment}.log")
 
 class TeamMember
   include MongoMapper::Document
