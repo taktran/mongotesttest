@@ -22,6 +22,12 @@ A nice mongodb gui: http://mongohub.todayclose.com/
 
 ## Deployment
 
+Deployed on [heroku](http://www.heroku.com/).
+
+To set up RACK_ENV on heroku
+
+   heroku config:add RACK_ENV=production
+
 To deploy (assuming heroku settings are set up)
 
    git push heroku master
