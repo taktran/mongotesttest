@@ -1,11 +1,14 @@
 require 'sinatra'
 require 'sinatra/mongomapper'
 
+ENV["RACK_ENV"] ||= "development"
+set :environment, ENV["RACK_ENV"]
+
 # Mongo mapper settings
-if settings.environment == :production
+if settings.environment == "production"
   # From heroku settings: http://devcenter.heroku.com/articles/mongolab
   set :mongomapper, ENV['MONGOLAB_URI']
-elsif settings.environment == :development
+elsif settings.environment == "development"
   set :mongomapper, 'mongomapper://localhost:27017/mongotesttest-example'
   set :mongo_logfile, File.join("log", "mongo-driver-development.log")
 end
@@ -19,6 +22,8 @@ end
 
 get '/' do
   output = ""
+  
+  output += "<p>Environment: #{settings.environment}</p>"
   
   first_billy = TeamMember.find_by_first_name('Billy')
   if first_billy.present?
