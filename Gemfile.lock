@@ -35,6 +35,7 @@ GEM
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rubyzip (0.9.4)
+    sass (3.1.10)
     shotgun (0.9)
       rack (>= 1.0)
     sinatra (1.1.0)
@@ -54,6 +55,7 @@ DEPENDENCIES
   bson_ext
   heroku
   mongo_mapper
+  sass
   shotgun
   sinatra (= 1.1.0)
   thin (= 1.2.7)
