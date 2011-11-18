@@ -1,8 +1,7 @@
 require 'sinatra'
 require 'sinatra/mongomapper'
 
-ENV["RACK_ENV"] ||= "development"
-set :environment, ENV["RACK_ENV"]
+set :environment, ENV["RACK_ENV"] || "development"
 
 # Mongo mapper settings
 if settings.environment == "production"
