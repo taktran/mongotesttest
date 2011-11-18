@@ -26,11 +26,11 @@ Deployed on [heroku](http://www.heroku.com/).
 
 To set up RACK_ENV on heroku
 
-   heroku config:add RACK_ENV=production
+    heroku config:add RACK_ENV=production
 
 To deploy (assuming heroku settings are set up)
 
-   git push heroku master
+    git push heroku master
 
 Uses [MongoLab](http://devcenter.heroku.com/articles/mongolab)
 
