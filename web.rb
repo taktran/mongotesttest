@@ -1,15 +1,21 @@
 require 'sinatra'
-require 'sinatra/mongomapper'
+require 'mongo_mapper'
+require 'uri'
 
 set :environment, ENV["RACK_ENV"] || "development"
 
 # Mongo mapper settings
 if settings.environment == "production"
   # From heroku settings: http://devcenter.heroku.com/articles/mongolab
-  set :mongomapper, ENV['MONGOLAB_URI']
+  setup_mongo_connection(ENV['MONGOLAB_URI'])
 elsif settings.environment == "development"
-  set :mongomapper, 'mongomapper://localhost:27017/mongotesttest-example'
-  set :mongo_logfile, File.join("log", "mongo-driver-development.log")
+  setup_mongo_connection('mongomapper://localhost:27017/mongotesttest-example')
+end
+
+def setup_mongo_connection(mongo_url)
+  MongoMapper.connection = Mongo::Connection.new(url.host, url.port, :logfile => logfile)
+  MongoMapper.database = url.path.gsub(/^\//, '')
+  MongoMapper.database.authenticate(url.user, url.password) if url.user && url.password
 end
 
 class TeamMember

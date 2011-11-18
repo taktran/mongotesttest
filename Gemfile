@@ -5,5 +5,5 @@ gem 'heroku'
 gem 'shotgun'
 
 # Mongo db
-gem 'sinatra-mongomapper'
+gem 'mongo_mapper'
 gem 'bson_ext'
